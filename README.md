@@ -65,3 +65,9 @@ Run a named Image (just like regular image)
 ```
 docker run image_name
 ```
+
+Run a image and enter innto bash
+
+```
+docker run --rm -it --entrypoint bash [IMAGE_ID]
+```

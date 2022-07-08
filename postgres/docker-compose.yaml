@@ -3,11 +3,12 @@ version: "3.5"
 services:
   db:
     image: postgres:14-alpine
+    hostname: db
     ports:
       - 5432:5432
     environment:
-      - POSTGRES_PASSWORD=root
-      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=1234
+      - POSTGRES_USER=lucas
       - POSTGRES_DB=basedosdados_dev
     restart: unless-stopped
     healthcheck:
@@ -20,8 +21,6 @@ services:
     depends_on:
       db: 
         condition: service_healthy
-
-volumes:
-  pgdata:
-    driver: local
+    command: >
+              sh -c "python create_table.py"
     
