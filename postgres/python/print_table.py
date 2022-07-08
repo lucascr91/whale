@@ -7,7 +7,7 @@ db = create_engine(conn_string)
 conn = db.connect()
 
 query = '''
-SELECT * 
+SELECT *
 FROM basedosdados_dev.public.iris
 LIMIT 10;
 '''
