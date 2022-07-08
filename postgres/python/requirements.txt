@@ -1,0 +1,5 @@
+pandas==1.2.4
+scikit_learn==1.1.1
+SQLAlchemy==1.4.35
+prefect==0.15.9
+dbt-postgres==1.1.1

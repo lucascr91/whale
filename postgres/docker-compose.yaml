@@ -1,0 +1,27 @@
+version: "3.5"
+
+services:
+  db:
+    image: postgres:14-alpine
+    ports:
+      - 5432:5432
+    environment:
+      - POSTGRES_PASSWORD=root
+      - POSTGRES_USER=postgres
+      - POSTGRES_DB=basedosdados_dev
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL","pg_isready", "POSTGRES_DB", "POSTGRES_USER"]
+      interval: 10s
+      retries: 5
+      timeout: 45s
+  python:
+    build: python
+    depends_on:
+      db: 
+        condition: service_healthy
+
+volumes:
+  pgdata:
+    driver: local
+    
