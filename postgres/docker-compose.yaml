@@ -1,9 +1,9 @@
-version: "3.5"
+version: "3.9"
 
 services:
   db:
     image: postgres:14-alpine
-    hostname: db
+    container_name: bdd_db
     ports:
       - 5432:5432
     environment:
@@ -16,11 +16,13 @@ services:
       interval: 10s
       retries: 5
       timeout: 45s
-  python:
-    build: python
+
+  app:
+    build:
+      context: python
+    container_name: bdd_app
     depends_on:
-      db: 
+      db:
         condition: service_healthy
     command: >
-              sh -c "python create_table.py"
-    
+      bash -c "python print_table.py"

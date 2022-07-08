@@ -1,9 +1,18 @@
+# Pull official base image
 FROM python:3.9-buster
 
-COPY ./ ./
-# RUN apk update && apk add bash && apk add --no-cache make && apk add g++
-RUN python -m pip install --upgrade pip
-RUN python -m pip install -r requirements.txt
-# ENTRYPOINT ["python"]
-# CMD ["create_table.py", "print_table.py"]
-# CMD ["python", "create_table.py"]
+ENV VIRTUAL_ENV=/opt/venv
+RUN python3 -m venv $VIRTUAL_ENV
+ENV PATH="$VIRTUAL_ENV/bin:$PATH"
+
+# Install dependencies
+COPY requirements.txt .
+RUN pip install --upgrade pip && \
+    pip install -r requirements.txt
+
+# Set working directory and copy python scripts
+RUN mkdir /scripts
+WORKDIR /scripts
+COPY *.py ./
+
+CMD ["python", "create_table.py"]
