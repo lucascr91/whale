@@ -24,5 +24,3 @@ services:
     depends_on:
       db:
         condition: service_healthy
-    command: >
-      bash -c "python print_table.py"

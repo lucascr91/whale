@@ -8,7 +8,7 @@ conn = db.connect()
 
 query = '''
 SELECT *
-FROM basedosdados_dev.public.iris
+FROM basedosdados_dev.iris
 LIMIT 10;
 '''
 df = pd.read_sql_query(query,con=conn)
