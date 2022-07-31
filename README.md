@@ -71,3 +71,8 @@ Run a image and enter innto bash
 ```
 docker run --rm -it --entrypoint bash [IMAGE_ID]
 ```
+
+Build image using custom file name
+
+```
+docker build -f Dockerfile.dev .
