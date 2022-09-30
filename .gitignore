@@ -1,1 +1,4 @@
 mais_pylint/mais
+basedosdados/credentials
+basedosdados/templates
+basedosdados/config.toml
