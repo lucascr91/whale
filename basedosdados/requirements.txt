@@ -1,4 +1,5 @@
-basedosdados==1.6.5
+basedosdados==1.6.8
 pandas==1.2.4
+tqdm==4.50.2
+Unidecode==1.3.4
 protobuf==3.20.*
-google-api-python-client==2.58.0
